@@ -5,8 +5,9 @@ import (
 	//"math"
 	"math/rand"
 	"time"
+
 	//"sliceapp/sort"
-	"github.com/LeoniLevi/golang/sliceapp/sort"
+	"github.com/LeoniLevi/golab/sort"
 )
 
 func main() {
@@ -28,14 +29,14 @@ func slice_action() {
 
 	val := rand.Intn(maxValue)
 	setValueSomewhere(val, arr0)
-	fmt.Println(" ~~~ added value", val, ":\n", arr0)	
-	
+	fmt.Println(" ~~~ added value", val, ":\n", arr0)
+
 	{
 		arr := copySlice(arr0)
 		sort.MyQuickSortOld(arr, 0, arrLen)
 		fmt.Println(" ~~~ Quick-Sorted<Old> Slice:\n", arr)
 	}
-	
+
 	{
 		arr := copySlice(arr0)
 		sort.MyQuickSort01(arr)
@@ -47,9 +48,7 @@ func slice_action() {
 		sort.MyQuickSortOld(arr, 0, arrLen)
 		fmt.Println(" ~~~ Quick-Sorted<1> Slice:\n", arr)
 	}
-	
-	
-	
+
 	arr1 := copySlice(arr0)
 	sort.MyBubbleSort(arr1)
 	fmt.Println(" ~~~ Bubble-Sorted Slice:")
@@ -60,11 +59,9 @@ func slice_action() {
 
 	idx = sort.SearchBinary01(arr1, val)
 	fmt.Printf("~~~ searchBinary01: <Value=%d>: FoundIndex=%d\n", val, idx)
-	
-	
+
 	fmt.Println(" === slice_action func Completed!")
 }
-
 
 func buildSlice(numElems, maxElemVal int) (newSlice []int) {
 	s1 := rand.NewSource(time.Now().UnixNano())

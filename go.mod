@@ -1,3 +1,3 @@
-module github.com/LeoniLevi/golang/sliceapp
+module github.com/LeoniLevi/golab
 
 go 1.19
