@@ -8,10 +8,12 @@ import (
 
 	//"sliceapp/sort"
 	"github.com/LeoniLevi/golab/sort"
+	"github.com/LeoniLevi/golab/tree"
 )
 
 func main() {
 	slice_action()
+	tree.TestIntTree()
 }
 
 func slice_action() {
