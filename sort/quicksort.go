@@ -2,11 +2,7 @@ package sort
 
 import "fmt"
 
-func hello1() {
-	fmt.Println("-- H.eLLO1")
-}
-
-func myQuickSort00(arr []int, idxBegin, idxEnd int) {
+func quickSort00(arr []int, idxBegin, idxEnd int) {
 	if idxEnd-idxBegin < 2 {
 		return
 	}
@@ -22,11 +18,11 @@ func myQuickSort00(arr []int, idxBegin, idxEnd int) {
 
 	//fmt.Println(" ** myQuickSort0:", arr[idxBegin:gtIdx-1], arr[gtIdx-1], arr[gtIdx:idxEnd])
 
-	myQuickSort00(arr, idxBegin, gtIdx-1)
-	myQuickSort00(arr, gtIdx, idxEnd)
+	quickSort00(arr, idxBegin, gtIdx-1)
+	quickSort00(arr, gtIdx, idxEnd)
 }
 
-func MyQuickSort01(arr []int) {
+func quickSort01(arr []int) {
 	len := len(arr)
 	if len > 2 {
 		axisVal := arr[0]
@@ -40,30 +36,12 @@ func MyQuickSort01(arr []int) {
 		}
 		arr[0], arr[gtIdx-1] = arr[gtIdx-1], arr[0]
 
-		MyQuickSort01(arr[0 : gtIdx-1])
-		MyQuickSort01(arr[gtIdx:len])
+		quickSort01(arr[0 : gtIdx-1])
+		quickSort01(arr[gtIdx:len])
 	}
 }
 
-func myQuickSort1(arr []int, low, high int) {
-	if high-low >= 1 {
-		pivot := arr[high]
-		gtIdx := low // to keep the last index of greater-than-pivot element
-
-		for i := low; i < high; i++ {
-			if arr[i] < pivot {
-				arr[i], arr[gtIdx] = arr[gtIdx], arr[i]
-				gtIdx += 1
-			}
-		}
-		arr[gtIdx], arr[high] = arr[high], arr[gtIdx]
-
-		myQuickSort1(arr, low, gtIdx-1)
-		myQuickSort1(arr, gtIdx+1, high)
-	}
-}
-
-func MyQuickSortOld(arr []int, idxBegin, idxEnd int) {
+func quickSortOld(arr []int, idxBegin, idxEnd int) {
 	if idxBegin > idxEnd {
 		msg := fmt.Sprintf("myQuickSort - incorrect idx : %d .. %d", idxBegin, idxEnd)
 		panic(msg)
@@ -105,6 +83,6 @@ func MyQuickSortOld(arr []int, idxBegin, idxEnd int) {
 
 	//fmt.Println(" ** myQuickSort:", arr[idxBegin:splitIdx], arr[splitIdx], arr[splitIdx+1:idxEnd])
 
-	MyQuickSortOld(arr, idxBegin, splitIdx)
-	MyQuickSortOld(arr, splitIdx+1, idxEnd)
+	quickSortOld(arr, idxBegin, splitIdx)
+	quickSortOld(arr, splitIdx+1, idxEnd)
 }
