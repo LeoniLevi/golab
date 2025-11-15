@@ -6,13 +6,21 @@ import (
 	"time"
 )
 
+func BubbleSortInt(nums []int) {
+	bubbleSort(nums)
+}
+
+func QuickSortInt(nums []int) {
+	quickSort01(nums)
+}
+
 func ExamineSorting() {
 	fmt.Println(" === ExamineSorting started...")
 
 	arrLen := 30
 
 	maxValue := 90
-	arr0 := buildSlice(arrLen, maxValue)
+	arr0 := buildRandomSlice(arrLen, maxValue)
 
 	//arr0 = []int{4, 8, 3, 5, 1, 2}
 	fmt.Println(" ~~~ Initial Slice:")
@@ -53,10 +61,9 @@ func ExamineSorting() {
 	fmt.Println(" === ExamineSorting func Completed!")
 }
 
-func buildSlice(numElems, maxElemVal int) (newSlice []int) {
+func buildRandomSlice(numElems, maxElemVal int) (newSlice []int) {
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
-
 	newSlice = make([]int, numElems)
 	for i := 0; i < numElems; i++ {
 		//newSlice[i] = r1.Intn(maxElemVal)

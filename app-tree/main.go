@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	tree.TestIntTree()
+	tree.ExamineIntTree()
 }

@@ -12,7 +12,7 @@ type IntTree struct {
 	root *IntNode
 }
 
-func TestIntTree() {
+func ExamineIntTree() {
 
 	fmt.Println("===== TestIntTree started...")
 	fmt.Println(" ~~ adding items to tree..")
