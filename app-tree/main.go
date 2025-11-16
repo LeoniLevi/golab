@@ -29,10 +29,24 @@ func examineIntTree() {
 	tree.AddTreeNode(myTree, 16)
 
 	fmt.Println(" ~~ result tree(after adding):")
-	tree.PrintNodes(myTree.Root)
+	printNodes(myTree.GetRoot())
 	fmt.Println()
 	fmt.Println("-----------------------")
 	tree.DisplayTreeHorizontally(myTree)
 
 	fmt.Println("===== examineIntTree Completed.")
+}
+
+func printNodes(root *tree.IntNode) {
+	fmt.Print("(")
+	if root != nil {
+		if root.GetLeft() != nil {
+			printNodes(root.GetLeft())
+		}
+		fmt.Print(root.GetValue())
+		if root.GetRight() != nil {
+			printNodes(root.GetRight())
+		}
+	}
+	fmt.Print(")")
 }

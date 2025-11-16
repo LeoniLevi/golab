@@ -3,70 +3,72 @@ package tree
 import "fmt"
 
 type IntNode struct {
-	Val   int
-	Left  *IntNode
-	Right *IntNode
+	val   int
+	left  *IntNode
+	right *IntNode
 }
 
 type IntTree struct {
-	Root *IntNode
+	root *IntNode
+}
+
+func (myTree *IntTree) GetRoot() *IntNode {
+	return myTree.root
+}
+
+func (node *IntNode) GetValue() int {
+	return node.val
+}
+
+func (node *IntNode) GetLeft() *IntNode {
+	return node.left
+}
+
+func (node *IntNode) GetRight() *IntNode {
+	return node.right
 }
 
 func CreateTree() *IntTree {
-	tree := IntTree{Root: nil}
+	tree := IntTree{root: nil}
 	return &tree
 	//return new IntTree {root: nil}
 }
 
 func AddTreeNode(tree *IntTree, nval int) {
-	newNode := IntNode{Val: nval, Left: nil, Right: nil}
-	if tree.Root == nil {
-		tree.Root = &newNode
+	newNode := IntNode{val: nval, left: nil, right: nil}
+	if tree.root == nil {
+		tree.root = &newNode
 	} else {
-		addNewNode(tree.Root, &newNode)
+		addNewNode(tree.root, &newNode)
 	}
-}
-
-func PrintNodes(root *IntNode) {
-	fmt.Print("(")
-	if root != nil {
-		if root.Left != nil {
-			PrintNodes(root.Left)
-		}
-		fmt.Print(root.Val)
-		if root.Right != nil {
-			PrintNodes(root.Right)
-		}
-	}
-	fmt.Print(")")
 }
 
 func DisplayTreeHorizontally(myTree *IntTree) {
-	displayNodeSubtreeHorizontally(myTree.Root, 0)
+	displayNodeSubtreeHorizontally(myTree.root, 0)
 }
 
 //-------------------
 
 func addNewNode(parent *IntNode, newnode *IntNode) {
-	if newnode.Val <= parent.Val {
-		if parent.Left == nil {
-			parent.Left = newnode
+	if newnode.val <= parent.val {
+		if parent.left == nil {
+			parent.left = newnode
 		} else {
-			addNewNode(parent.Left, newnode)
+			addNewNode(parent.left, newnode)
 		}
 	} else {
-		if parent.Right == nil {
-			parent.Right = newnode
+		if parent.right == nil {
+			parent.right = newnode
 		} else {
-			addNewNode(parent.Right, newnode)
+			addNewNode(parent.right, newnode)
 		}
 	}
 }
 
 func displayNodeSubtreeHorizontally(root *IntNode, indent int) {
 	if root != nil {
-		displayNodeSubtreeHorizontally(root.Left, indent+3)
-		fmt.Printf("%*s%d\n", indent, "", root.Val)
-		displayNodeSubtreeHorizontally(root.Right, indent+3)
+		displayNodeSubtreeHorizontally(root.left, indent+3)
+		fmt.Printf("%*s%d\n", indent, "", root.val)
+		displayNodeSubtreeHorizontally(root.right, indent+3)
 	}
 }
